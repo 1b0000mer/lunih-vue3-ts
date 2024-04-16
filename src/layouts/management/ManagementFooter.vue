@@ -1,4 +1,4 @@
-<script setup></script>
-<template>
-  <h1>This is management footer</h1>
-</template>
+<script setup>
+const currYear = new Date().getFullYear()
+</script>
+<template>© {{ currYear }} LUNIH</template>

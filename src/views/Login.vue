@@ -28,14 +28,13 @@ const doLogin = () => {
 </script>
 
 <template>
-  <div>
-    <h1>Login time</h1>
-    <form @submit.prevent>
-      <label>Email:</label>
-      <input type="email" placeholder="Email" v-model="email" />
-      <label>Password:</label>
-      <input type="password" placeholder="Password" v-model="password" />
-      <button type="submit" @click="doLogin">Login</button>
-    </form>
-  </div>
+  <h1>Login time</h1>
+  <br />
+  <form @submit.prevent>
+    <label>Email:</label>
+    <input type="email" placeholder="Email" v-model="email" />
+    <label>Password:</label>
+    <input type="password" placeholder="Password" v-model="password" />
+    <button type="submit" @click="doLogin">Login</button>
+  </form>
 </template>

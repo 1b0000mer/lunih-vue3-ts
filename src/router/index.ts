@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MainLayout from '@/layouts/main/MainLayout.vue'
 import ManagementLayout from '@/layouts/management/ManagementLayout.vue'
+import AuthenticateService from '@/core/services/auth/authenticate.service'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,11 @@ const router = createRouter({
           path: '/management/dashboard',
           name: 'dashboard',
           component: () => import('../views/management/Dashboard.vue')
+        },
+        {
+          path: '/management/categories/faculty',
+          name: 'faculty',
+          component: () => import('../views/management/categories/Faculty.vue')
         }
       ]
     },
@@ -49,6 +55,16 @@ const router = createRouter({
           component: () => import('../views/Login.vue')
         }
       ]
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: {
+        beforeRouteEnter(to, from, next) {
+          AuthenticateService.doLogout()
+          next('/')
+        }
+      }
     }
   ]
 })
