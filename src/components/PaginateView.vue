@@ -5,10 +5,8 @@ import { ref, reactive } from 'vue'
 
 const props = defineProps(['pageConfig'])
 const emit = defineEmits(['pageChange'])
+
 let _pageConfig = props.pageConfig
-// let btn = reactive({
-//   state: false
-// })
 
 function setPage(pageNumber: number) {
   if (

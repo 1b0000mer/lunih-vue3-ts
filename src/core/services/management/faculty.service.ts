@@ -40,7 +40,7 @@ const FacultyService = {
   },
 
   delete(id: number) {
-    return axios.delete(apiURL + +`/${id}`)
+    return axios.delete(apiURL + `/${id}`)
   }
 }
 

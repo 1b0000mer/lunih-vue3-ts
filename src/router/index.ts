@@ -40,7 +40,7 @@ const router = createRouter({
         {
           path: '/management/categories/faculty',
           name: 'faculty',
-          component: () => import('../views/management/categories/Faculty.vue')
+          component: () => import('../views/management/categories/faculty/FacultyList.vue')
         }
       ]
     },
