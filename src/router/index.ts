@@ -66,7 +66,13 @@ const router = createRouter({
         }
       }
     }
-  ]
+  ],
+  scrollBehavior() {
+    // alway scroll on top
+    return {
+      top: 0
+    }
+  }
 })
 
 export default router

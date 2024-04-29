@@ -20,7 +20,8 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
@@ -34,6 +35,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "npm-run-all2": "^6.1.2",
     "prettier": "^3.2.5",
+    "scss": "^0.2.4",
     "typescript": "~5.4.0",
     "vite": "^5.2.8",
     "vite-plugin-vue-devtools": "^7.0.25",
