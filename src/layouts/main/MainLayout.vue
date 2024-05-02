@@ -7,20 +7,13 @@ import { CContainer } from '@coreui/vue'
 </script>
 
 <template>
-  <div className="wrapper d-flex flex-column min-vh-100">
+  <div class="wrapper d-flex flex-column min-vh-100">
     <MainHeader />
-    <div className="body flex-grow-1">
-      <CContainer className="px-4" lg>
+    <div class="body flex-grow-1">
+      <CContainer class="px-4" lg>
         <RouterView />
       </CContainer>
     </div>
     <MainFooter />
   </div>
-  <!-- <div>
-    <MainHeader></MainHeader>
-    <div class="main-page">
-      <RouterView></RouterView>
-    </div>
-    <MainFooter></MainFooter>
-  </div> -->
 </template>

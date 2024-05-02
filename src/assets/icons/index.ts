@@ -1,4 +1,4 @@
-import { cilPencil, cilTrash } from '@coreui/icons'
+import { cilLockLocked, cilPencil, cilTrash, cilUser } from '@coreui/icons'
 
 export const iconsSet = Object.assign(
   {},
@@ -6,7 +6,9 @@ export const iconsSet = Object.assign(
   //icons
   {
     cilPencil,
-    cilTrash
+    cilTrash,
+    cilUser,
+    cilLockLocked
   },
 
   //flags

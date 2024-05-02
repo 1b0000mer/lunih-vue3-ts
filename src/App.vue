@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { useStore } from 'vuex'
-import { CButton, useColorModes } from '@coreui/vue'
+import { useColorModes } from '@coreui/vue'
 import { onBeforeMount } from 'vue'
 
 const store = useStore()
@@ -9,7 +9,8 @@ const { isColorModeSet, setColorMode } = useColorModes('coreui-free-vue-admin-te
 
 onBeforeMount(() => {
   const urlParams = new URLSearchParams(window.location.href.split('?')[1])
-  const theme = urlParams.get('theme') && urlParams.get('theme').match(/^[A-Za-z0-9\s]+/)[0]
+  const theme = urlParams.get('theme')
+
   if (theme) {
     setColorMode(theme)
     return
@@ -24,10 +25,5 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <CButton></CButton>
   <RouterView />
 </template>
-
-<style lang="scss">
-@import '/src/scss/style.scss';
-</style>

@@ -3,35 +3,14 @@ import App from './App.vue'
 import router from './router'
 
 import axios, { type InternalAxiosRequestConfig } from 'axios'
+import './scss/style.scss'
 import { iconsSet as icons } from './assets/icons'
 
 import { UrlConstant } from './core/constants/url.constant'
 import AuthenticateService from './core/services/auth/authenticate.service'
 import CoreuiVue from '@coreui/vue'
 import CIcon from '@coreui/icons-vue'
-import { createStore } from 'vuex'
-
-//store
-const store = createStore({
-  state: {
-    sidebarVisible: '',
-    sidebarUnfoldable: false,
-    theme: 'dark'
-  },
-  mutations: {
-    toggleSidebar(state: any) {
-      state.sidebarVisible = !state.sidebarVisible
-    },
-    toggleUnfoldable(state: any) {
-      state.sidebarUnfoldable = !state.sidebarUnfoldable
-    },
-    updateSidebarVisible(state: any, payload: any) {
-      state.sidebarVisible = payload.value
-    }
-  },
-  actions: {},
-  modules: {}
-})
+import store from './store'
 
 const app = createApp(App)
 
