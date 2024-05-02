@@ -1,26 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter, RouterLink } from 'vue-router'
-
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardGroup,
-  CCol,
-  CContainer,
-  CForm,
-  CFormInput,
-  CInputGroup,
-  CInputGroupText,
-  CRow,
-  CSpinner
-} from '@coreui/vue'
 
 import AuthenticateService from '@/core/services/auth/authenticate.service'
 import { UrlConstant } from '@/core/constants/url.constant'
+import { toast } from 'vue-sonner'
+import { AxiosError } from 'axios'
 
 const router = useRouter()
+const { t } = useI18n()
 
 const validated = ref(false)
 const loading = ref(false)
@@ -42,6 +31,7 @@ const doLogin = (event: any) => {
     }).then(
       (res) => {
         loading.value = false
+        toast.success(t('WELCOME_MSG'))
         AuthenticateService.setAuthData(res.data)
         if (AuthenticateService.checkRoleAdmin()) {
           router.push(UrlConstant.ROUTE.MANAGEMENT.MANAGEMENT)
@@ -50,8 +40,14 @@ const doLogin = (event: any) => {
         }
       },
       (error) => {
+        if (error instanceof AxiosError) {
+          if (error.code === 'ERR_BAD_REQUEST') {
+            toast.error(error.response?.data.message)
+          }
+        } else {
+          toast.error(error.message)
+        }
         loading.value = false
-        console.error(error)
       }
     )
   }
@@ -67,16 +63,16 @@ const doLogin = (event: any) => {
             <CCard class="p-4">
               <CCardBody>
                 <CForm noValidate :validated="validated" @submit.prevent="doLogin">
-                  <h1>LOGIN</h1>
-                  <p class="text-body-secondary">LOG_IN_BODY</p>
+                  <h1>{{ t('LOG_IN') }}</h1>
+                  <p class="text-body-secondary">{{ t('LOG_IN_BODY') }}</p>
                   <CInputGroup class="mb-3">
                     <CInputGroupText>
                       <CIcon icon="cilUser" />
                     </CInputGroupText>
                     <CFormInput
                       required
-                      feedbackInvalid="USER_NAME_ERR"
-                      placeholder="USER_NAME_TIP"
+                      :feedbackInvalid="t('USER_NAME_ERR')"
+                      :placeholder="t('USER_NAME_TIP')"
                       autoComplete="off"
                       v-model="email"
                     />
@@ -87,9 +83,9 @@ const doLogin = (event: any) => {
                     </CInputGroupText>
                     <CFormInput
                       required
-                      feedbackInvalid="PASSWORD_ERR"
+                      :feedbackInvalid="t('PASSWORD_ERR')"
                       type="password"
-                      placeholder="PASSWORD_TIP"
+                      :placeholder="t('PASSWORD_TIP')"
                       autoComplete="off"
                       v-model="password"
                     />
@@ -104,11 +100,11 @@ const doLogin = (event: any) => {
                           role="status"
                           :hidden="!loading"
                         ></CSpinner>
-                        'LOG_IN'
+                        {{ t('LOG_IN') }}
                       </CButton>
                     </CCol>
                     <CCol xs="6" class="text-right">
-                      <CButton color="link" class="px-0"> 'FORGOR' </CButton>
+                      <CButton color="link" class="px-0"> {{ t('FORGOR') }} </CButton>
                     </CCol>
                   </CRow>
                 </CForm>
