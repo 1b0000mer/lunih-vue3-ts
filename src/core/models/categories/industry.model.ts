@@ -1,6 +1,6 @@
 export class Industry {
-  id!: number;
-  nameEn!: string;
-  nameLv!: string;
-  status!: boolean;
+  id?: number
+  nameEn!: string
+  nameLv!: string
+  status?: boolean
 }

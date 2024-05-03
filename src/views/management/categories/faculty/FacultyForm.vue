@@ -2,7 +2,6 @@
 import { reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { CButton, CFormInput, CModalHeader, CModalFooter, CForm, CModalTitle } from '@coreui/vue'
 import { toast } from 'vue-sonner'
 
 import FacultyService from '@/core/services/management/faculty.service'

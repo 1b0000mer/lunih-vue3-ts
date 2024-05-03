@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import MainHeader from './MainHeader.vue'
-import MainFooter from './MainFooter.vue'
 import { RouterView } from 'vue-router'
 
-import { CContainer } from '@coreui/vue'
+import MainHeader from './MainHeader.vue'
+import MainFooter from './MainFooter.vue'
 </script>
 
 <template>

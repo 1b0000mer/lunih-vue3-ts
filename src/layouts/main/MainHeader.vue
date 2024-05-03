@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-
-import { CNavbar, CContainer, CNavbarBrand, CCollapse, CNavbarNav, CNavItem } from '@coreui/vue'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const visible = ref(false)
 </script>

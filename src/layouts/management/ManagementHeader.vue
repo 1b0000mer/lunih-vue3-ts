@@ -1,17 +1,5 @@
 <script setup lang="ts">
-import {
-  CContainer,
-  CDropdown,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CHeader,
-  CHeaderNav,
-  CHeaderToggler,
-  CNavItem,
-  CNavLink,
-  useColorModes
-} from '@coreui/vue'
+import { useColorModes } from '@coreui/vue'
 import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
@@ -37,15 +25,6 @@ onMounted(() => {
 })
 </script>
 <template>
-  <!-- <div class="wrapper">
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/management">Dashboard</RouterLink>
-      <RouterLink to="/management/categories/faculty">Faculty</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/logout">Logout</RouterLink>
-    </nav>
-  </div> -->
   <CHeader position="sticky" :class="headerClassNames">
     <CContainer class="border-bottom px-4" fluid>
       <CHeaderToggler @click="store.commit('toggleSidebar')" style="margin-inline-start: '-14px'">
