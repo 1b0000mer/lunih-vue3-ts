@@ -4,7 +4,7 @@ import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 import router from './router'
 
-import axios, { type InternalAxiosRequestConfig } from 'axios'
+import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios'
 import './scss/style.scss'
 import { iconsSet as icons } from './assets/icons'
 
@@ -17,6 +17,7 @@ import CoreuiVue from '@coreui/vue'
 import CIcon from '@coreui/icons-vue'
 // @ts-ignore
 import store from './store'
+import { toast } from 'vue-sonner'
 
 const i18n = createI18n({
   legacy: false,
@@ -63,3 +64,19 @@ axios.interceptors.request.use((config) => {
   }
   return config
 })
+
+axios.interceptors.response.use(
+  (res) => {
+    return res
+  },
+  (error) => {
+    if (error instanceof AxiosError) {
+      if (error.code === 'ERR_BAD_REQUEST') {
+        toast.error(error.response?.data.message)
+      } else {
+        toast.error(error.message)
+      }
+    }
+    return Promise.reject(error)
+  }
+)

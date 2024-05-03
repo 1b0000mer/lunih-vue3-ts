@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { UrlConstant } from '@/core/constants/url.constant'
-import type { Faculty } from '@/core/models/categories/faculty.model'
+import type { Industry } from '@/core/models/categories/industry.model'
 import type { PagedResults } from '@/core/models/common/response-page.model'
 
-const apiURL = UrlConstant.API.FACULTY
+const apiURL = UrlConstant.API.INDUSTRY
 
-const FacultyService = {
+const IndustryService = {
   getAll() {
     return axios.get(apiURL)
   },
@@ -19,20 +19,19 @@ const FacultyService = {
       column: column ?? ''
     }
 
-    // return axios.get(apiURL, { params })
-    return axios.get<PagedResults<Faculty>>(apiURL + '/paging', { params })
+    return axios.get<PagedResults<Industry>>(apiURL + '/paging', { params })
   },
 
-  create(model: Faculty) {
+  create(model: Industry) {
     return axios.post(apiURL, model)
   },
 
-  update(id: number, model: Faculty) {
+  update(id: number, model: Industry) {
     return axios.put(apiURL + `/${id}`, model)
   },
 
   changeStatus(id: number) {
-    return axios.delete(apiURL + '/change-status' + `/${id}`)
+    return axios.delete(apiURL + '/change-status/' + id)
   },
 
   delete(id: number) {
@@ -40,4 +39,4 @@ const FacultyService = {
   }
 }
 
-export default FacultyService
+export default IndustryService

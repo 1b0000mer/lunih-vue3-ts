@@ -4,6 +4,10 @@ import {
   cilBell,
   cilBook,
   cilCheck,
+  cilChevronDoubleLeft,
+  cilChevronDoubleRight,
+  cilChevronLeft,
+  cilChevronRight,
   cilContrast,
   cilEducation,
   cilEnvelopeOpen,
@@ -16,6 +20,7 @@ import {
   cilMenu,
   cilMoon,
   cilPencil,
+  cilPlus,
   cilSitemap,
   cilSpeedometer,
   cilSun,
@@ -47,7 +52,12 @@ export const iconsSet = Object.assign(
     cilFactory,
     cilGroup,
     cilEducation,
-    cilCheck
+    cilCheck,
+    cilPlus,
+    cilChevronDoubleLeft,
+    cilChevronLeft,
+    cilChevronRight,
+    cilChevronDoubleRight
   },
 
   //flags

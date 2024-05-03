@@ -6,7 +6,6 @@ import { useRouter, RouterLink } from 'vue-router'
 import AuthenticateService from '@/core/services/auth/authenticate.service'
 import { UrlConstant } from '@/core/constants/url.constant'
 import { toast } from 'vue-sonner'
-import { AxiosError } from 'axios'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -39,14 +38,7 @@ const doLogin = (event: any) => {
           router.push(UrlConstant.ROUTE.MAIN.HOME)
         }
       },
-      (error) => {
-        if (error instanceof AxiosError) {
-          if (error.code === 'ERR_BAD_REQUEST') {
-            toast.error(error.response?.data.message)
-          }
-        } else {
-          toast.error(error.message)
-        }
+      () => {
         loading.value = false
       }
     )

@@ -41,6 +41,26 @@ const router = createRouter({
           path: '/management/categories/faculty',
           name: 'faculty',
           component: () => import('../views/management/categories/faculty/FacultyList.vue')
+        },
+        {
+          path: '/management/categories/industry',
+          name: 'industry',
+          component: () => import('../views/management/categories/industry/IndustryList.vue')
+        },
+        {
+          path: '/management/categories/program',
+          name: 'program',
+          component: () => import('../views/management/categories/program/ProgramList.vue')
+        },
+        {
+          path: '/management/users/student/approve',
+          name: 'approve',
+          component: {
+            beforeRouteEnter(to, from, next) {
+              AuthenticateService.doLogout()
+              next('/')
+            }
+          }
         }
       ]
     },
