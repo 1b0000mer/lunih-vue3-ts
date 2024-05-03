@@ -21,7 +21,7 @@ const { locale, t } = useI18n()
 const listProgram = ref(new Paginate<Program>())
 const searchValue = ref('')
 const showModal = ref(false)
-const modalData: ModalData<Program> = new ModalData<Program>()
+const modalData: ModalData<any> = new ModalData()
 
 onBeforeMount(() => {
   getDataPaging()
@@ -55,7 +55,14 @@ const pageChange = (page: Paginate<Program>) => {
 const onOpenModal = (data?: Program) => {
   if (data) {
     ;(modalData.title = t('EDIT_TITLE')), (modalData.action = SystemConstant.ACTION.EDIT)
-    modalData.data = data
+    modalData.data = {
+      id: data.id,
+      nameEn: data.nameEn,
+      nameLv: data.nameLv,
+      studyLevel: data.studyLevel,
+      facultyID: data.faculty.id,
+      industryList: data.industryList?.map((industry) => industry.id)
+    }
   } else {
     modalData.title = t('ADD_TITLE')
     modalData.data = undefined
@@ -127,7 +134,9 @@ const onDelete = (id: number) => {
             <CTableHeaderCell scope="col">{{ t('PROGRAM_NAME') }}</CTableHeaderCell>
             <CTableHeaderCell scope="col">{{ t('STUDY_LEVEL') }}</CTableHeaderCell>
             <CTableHeaderCell scope="col">{{ t('FACULTY_NAME') }}</CTableHeaderCell>
-            <CTableHeaderCell scope="col">{{ t('INDUSTRY_NAME') }}</CTableHeaderCell>
+            <CTableHeaderCell scope="col" style="width: 1.5rem">{{
+              t('INDUSTRY_NAME')
+            }}</CTableHeaderCell>
             <CTableHeaderCell scope="col" class="text-center">{{ t('STATUS') }}</CTableHeaderCell>
             <CTableHeaderCell scope="col" class="text-center">{{ t('ACTIONS') }}</CTableHeaderCell>
           </CTableRow>

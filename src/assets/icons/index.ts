@@ -17,6 +17,7 @@ import {
   cilInstitution,
   cilList,
   cilLockLocked,
+  cilMagnifyingGlass,
   cilMenu,
   cilMoon,
   cilPencil,
@@ -57,7 +58,8 @@ export const iconsSet = Object.assign(
     cilChevronDoubleLeft,
     cilChevronLeft,
     cilChevronRight,
-    cilChevronDoubleRight
+    cilChevronDoubleRight,
+    cilMagnifyingGlass
   },
 
   //flags
