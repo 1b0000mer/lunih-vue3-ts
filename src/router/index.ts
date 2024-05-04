@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MainLayout from '@/layouts/main/MainLayout.vue'
 import ManagementLayout from '@/layouts/management/ManagementLayout.vue'
 import AuthenticateService from '@/core/services/auth/authenticate.service'
+import { toast } from 'vue-sonner'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,14 @@ const router = createRouter({
     {
       path: '/management',
       component: ManagementLayout,
+      beforeEnter: () => {
+        if (!AuthenticateService.checkRoleAdmin()) {
+          toast.error('Unauthorized')
+          return '/login'
+        } else {
+          return true
+        }
+      },
       redirect: { name: 'dashboard' },
       children: [
         {
@@ -85,6 +94,18 @@ const router = createRouter({
           next('/')
         }
       }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: MainLayout,
+      redirect: { name: '404' },
+      children: [
+        {
+          path: '',
+          name: '404',
+          component: () => import('../views/Page404.vue')
+        }
+      ]
     }
   ],
   scrollBehavior() {

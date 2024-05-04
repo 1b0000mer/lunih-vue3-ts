@@ -10,7 +10,14 @@ import MainFooter from './MainFooter.vue'
     <MainHeader />
     <div class="body flex-grow-1">
       <CContainer class="px-4" lg>
-        <RouterView />
+        <Suspense>
+          <template #default>
+            <RouterView />
+          </template>
+          <template #fallback>
+            <CSpinner color="primary" />
+          </template>
+        </Suspense>
       </CContainer>
     </div>
     <MainFooter />

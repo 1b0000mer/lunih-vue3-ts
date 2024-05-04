@@ -58,15 +58,21 @@ const onSubmit = (event: any) => {
     loading.value = false
   } else {
     if (props.modalData.action === SystemConstant.ACTION.EDIT) {
-      ProgramService.update(props.modalData.data.id, programForm).then(() => {
-        emit('closeModal', true)
-        toast.success(t('MSG_UPDATE_DONE'))
-      })
+      ProgramService.update(props.modalData.data.id, programForm).then(
+        () => {
+          emit('closeModal', true)
+          toast.success(t('MSG_UPDATE_DONE'))
+        },
+        () => (loading.value = false)
+      )
     } else {
-      ProgramService.create(programForm).then(() => {
-        emit('closeModal', true)
-        toast.success(t('MSG_CREATE_DONE'))
-      })
+      ProgramService.create(programForm).then(
+        () => {
+          emit('closeModal', true)
+          toast.success(t('MSG_CREATE_DONE'))
+        },
+        () => (loading.value = false)
+      )
     }
   }
 }
