@@ -60,16 +60,6 @@ const router = createRouter({
           path: '/management/categories/program',
           name: 'program',
           component: () => import('../views/management/categories/program/ProgramList.vue')
-        },
-        {
-          path: '/management/users/student/approve',
-          name: 'approve',
-          component: {
-            beforeRouteEnter(to, from, next) {
-              AuthenticateService.doLogout()
-              next('/')
-            }
-          }
         }
       ]
     },

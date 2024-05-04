@@ -5,6 +5,8 @@ import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import CIcon from '@coreui/icons-vue'
 
+import AppHeaderDropdown from './AppHeaderDropdown.vue'
+
 const store = useStore()
 const { locale, t } = useI18n()
 const { colorMode, setColorMode } = useColorModes('coreui-free-vue-admin-template-theme')
@@ -27,14 +29,9 @@ onMounted(() => {
 <template>
   <CHeader position="sticky" :class="headerClassNames">
     <CContainer class="border-bottom px-4" fluid>
-      <CHeaderToggler @click="store.commit('toggleSidebar')" style="margin-inline-start: '-14px'">
+      <CHeaderToggler @click="store.commit('toggleSidebar')" style="margin-inline-start: -14px">
         <CIcon icon="cilMenu" size="lg" />
       </CHeaderToggler>
-      <CHeaderNav class="d-none d-md-flex">
-        <CNavItem>
-          <CNavLink to="/management"> {{ t('CATEGORIES') }} </CNavLink>
-        </CNavItem>
-      </CHeaderNav>
       <CHeaderNav class="ms-auto">
         <CNavItem>
           <CNavLink href="#">
@@ -117,7 +114,7 @@ onMounted(() => {
         <li class="nav-item py-1">
           <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
         </li>
-        <!-- <AppHeaderDropdown /> -->
+        <AppHeaderDropdown />
       </CHeaderNav>
     </CContainer>
     <CContainer class="px-4" fluid>

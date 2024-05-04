@@ -1,6 +1,7 @@
 import {
   cifLv,
   cifUs,
+  cilAccountLogout,
   cilBell,
   cilBook,
   cilCheck,
@@ -22,6 +23,7 @@ import {
   cilMoon,
   cilPencil,
   cilPlus,
+  cilSettings,
   cilSitemap,
   cilSpeedometer,
   cilSun,
@@ -59,7 +61,9 @@ export const iconsSet = Object.assign(
     cilChevronLeft,
     cilChevronRight,
     cilChevronDoubleRight,
-    cilMagnifyingGlass
+    cilMagnifyingGlass,
+    cilSettings,
+    cilAccountLogout
   },
 
   //flags
