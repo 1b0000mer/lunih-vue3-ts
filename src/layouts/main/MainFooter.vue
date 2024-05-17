@@ -1,8 +1,22 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+// reactive state
+const currentYear = ref(0)
+
+// any additional logics here
+
+// lifecycle hooks
+onMounted(() => {
+  currentYear.value = new Date().getFullYear()
+})
+</script>
+
 <template>
   <CFooter class="px-4">
     <div>
       <a href="https://coreui.io" target="_blank">CoreUI</a>
-      <span class="ms-1">&copy; {{ new Date().getFullYear() }} LUNIH</span>
+      <span class="ms-1">&copy; {{ currentYear }} LUNIH</span>
     </div>
     <div class="ms-auto">
       <span class="me-1" target="_blank">Powered by</span>
