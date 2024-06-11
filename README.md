@@ -2,6 +2,15 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Test user
+
+| User     | Password | Role  |
+|----------|----------|-------|
+| admin@admin.com    | 123456| admin |
+| student@student.com    | 123456| student |
+| university@university.com    | 123456| university  |
+| company@company.com    | 123456 | company  |
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
